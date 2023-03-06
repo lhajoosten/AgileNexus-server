@@ -23,7 +23,7 @@ import {BacklogItemRepository} from '../repositories';
 export class BacklogItemController {
   constructor(
     @repository(BacklogItemRepository)
-    public backlogItemRepository : BacklogItemRepository,
+    public backlogItemRepository: BacklogItemRepository,
   ) {}
 
   @post('/backlog-items')
@@ -106,7 +106,8 @@ export class BacklogItemController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(BacklogItem, {exclude: 'where'}) filter?: FilterExcludingWhere<BacklogItem>
+    @param.filter(BacklogItem, {exclude: 'where'})
+    filter?: FilterExcludingWhere<BacklogItem>,
   ): Promise<BacklogItem> {
     return this.backlogItemRepository.findById(id, filter);
   }

@@ -23,7 +23,7 @@ import {NotificationRepository} from '../repositories';
 export class NotificationController {
   constructor(
     @repository(NotificationRepository)
-    public notificationRepository : NotificationRepository,
+    public notificationRepository: NotificationRepository,
   ) {}
 
   @post('/notifications')
@@ -106,7 +106,8 @@ export class NotificationController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Notification, {exclude: 'where'}) filter?: FilterExcludingWhere<Notification>
+    @param.filter(Notification, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Notification>,
   ): Promise<Notification> {
     return this.notificationRepository.findById(id, filter);
   }

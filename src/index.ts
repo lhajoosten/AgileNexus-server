@@ -18,13 +18,10 @@ export async function main(options: ApplicationConfig = {}) {
 }
 
 if (require.main === module) {
-  const dotenv = require('dotenv');
-  dotenv.config();
-
   // Run the application
   const config = {
     rest: {
-      port: +(process.env.SERVER_PORT || 3000),
+      port: +(process.env.SERVER_PORT ?? 3000),
       host: process.env.HOST,
       gracePeriodForClose: 5000, // 5 seconds
       openApiSpec: {

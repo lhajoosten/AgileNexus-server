@@ -23,7 +23,7 @@ import {TaskRepository} from '../repositories';
 export class TaskController {
   constructor(
     @repository(TaskRepository)
-    public taskRepository : TaskRepository,
+    public taskRepository: TaskRepository,
   ) {}
 
   @post('/tasks')
@@ -52,9 +52,7 @@ export class TaskController {
     description: 'Task model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Task) where?: Where<Task>,
-  ): Promise<Count> {
+  async count(@param.where(Task) where?: Where<Task>): Promise<Count> {
     return this.taskRepository.count(where);
   }
 
@@ -70,9 +68,7 @@ export class TaskController {
       },
     },
   })
-  async find(
-    @param.filter(Task) filter?: Filter<Task>,
-  ): Promise<Task[]> {
+  async find(@param.filter(Task) filter?: Filter<Task>): Promise<Task[]> {
     return this.taskRepository.find(filter);
   }
 
@@ -106,7 +102,7 @@ export class TaskController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Task, {exclude: 'where'}) filter?: FilterExcludingWhere<Task>
+    @param.filter(Task, {exclude: 'where'}) filter?: FilterExcludingWhere<Task>,
   ): Promise<Task> {
     return this.taskRepository.findById(id, filter);
   }

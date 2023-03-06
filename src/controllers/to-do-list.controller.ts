@@ -23,7 +23,7 @@ import {ToDoListRepository} from '../repositories';
 export class ToDoListController {
   constructor(
     @repository(ToDoListRepository)
-    public toDoListRepository : ToDoListRepository,
+    public toDoListRepository: ToDoListRepository,
   ) {}
 
   @post('/to-do-lists')
@@ -52,9 +52,7 @@ export class ToDoListController {
     description: 'ToDoList model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(ToDoList) where?: Where<ToDoList>,
-  ): Promise<Count> {
+  async count(@param.where(ToDoList) where?: Where<ToDoList>): Promise<Count> {
     return this.toDoListRepository.count(where);
   }
 
@@ -106,7 +104,8 @@ export class ToDoListController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(ToDoList, {exclude: 'where'}) filter?: FilterExcludingWhere<ToDoList>
+    @param.filter(ToDoList, {exclude: 'where'})
+    filter?: FilterExcludingWhere<ToDoList>,
   ): Promise<ToDoList> {
     return this.toDoListRepository.findById(id, filter);
   }

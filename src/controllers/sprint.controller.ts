@@ -23,7 +23,7 @@ import {SprintRepository} from '../repositories';
 export class SprintController {
   constructor(
     @repository(SprintRepository)
-    public sprintRepository : SprintRepository,
+    public sprintRepository: SprintRepository,
   ) {}
 
   @post('/sprints')
@@ -52,9 +52,7 @@ export class SprintController {
     description: 'Sprint model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Sprint) where?: Where<Sprint>,
-  ): Promise<Count> {
+  async count(@param.where(Sprint) where?: Where<Sprint>): Promise<Count> {
     return this.sprintRepository.count(where);
   }
 
@@ -70,9 +68,7 @@ export class SprintController {
       },
     },
   })
-  async find(
-    @param.filter(Sprint) filter?: Filter<Sprint>,
-  ): Promise<Sprint[]> {
+  async find(@param.filter(Sprint) filter?: Filter<Sprint>): Promise<Sprint[]> {
     return this.sprintRepository.find(filter);
   }
 
@@ -106,7 +102,8 @@ export class SprintController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Sprint, {exclude: 'where'}) filter?: FilterExcludingWhere<Sprint>
+    @param.filter(Sprint, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Sprint>,
   ): Promise<Sprint> {
     return this.sprintRepository.findById(id, filter);
   }

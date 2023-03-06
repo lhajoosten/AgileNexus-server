@@ -9,7 +9,9 @@ export class UserRepository extends DefaultCrudRepository<
   UserRelations
 > {
   constructor(
-    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
+    @inject('datasources.Microsoft_SQL_DB')
+    dataSource: MicrosoftSqlDbDataSource,
+  ) {
     super(User, dataSource);
   }
 }

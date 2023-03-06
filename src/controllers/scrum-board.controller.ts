@@ -23,7 +23,7 @@ import {ScrumBoardRepository} from '../repositories';
 export class ScrumBoardController {
   constructor(
     @repository(ScrumBoardRepository)
-    public scrumBoardRepository : ScrumBoardRepository,
+    public scrumBoardRepository: ScrumBoardRepository,
   ) {}
 
   @post('/scrum-boards')
@@ -106,7 +106,8 @@ export class ScrumBoardController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(ScrumBoard, {exclude: 'where'}) filter?: FilterExcludingWhere<ScrumBoard>
+    @param.filter(ScrumBoard, {exclude: 'where'})
+    filter?: FilterExcludingWhere<ScrumBoard>,
   ): Promise<ScrumBoard> {
     return this.scrumBoardRepository.findById(id, filter);
   }

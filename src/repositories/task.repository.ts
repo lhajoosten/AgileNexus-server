@@ -9,7 +9,9 @@ export class TaskRepository extends DefaultCrudRepository<
   TaskRelations
 > {
   constructor(
-    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
+    @inject('datasources.Microsoft_SQL_DB')
+    dataSource: MicrosoftSqlDbDataSource,
+  ) {
     super(Task, dataSource);
   }
 }

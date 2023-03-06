@@ -9,7 +9,9 @@ export class BoardColumnRepository extends DefaultCrudRepository<
   BoardColumnRelations
 > {
   constructor(
-    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
+    @inject('datasources.Microsoft_SQL_DB')
+    dataSource: MicrosoftSqlDbDataSource,
+  ) {
     super(BoardColumn, dataSource);
   }
 }

@@ -23,7 +23,7 @@ import {CommentRepository} from '../repositories';
 export class CommentController {
   constructor(
     @repository(CommentRepository)
-    public commentRepository : CommentRepository,
+    public commentRepository: CommentRepository,
   ) {}
 
   @post('/comments')
@@ -52,9 +52,7 @@ export class CommentController {
     description: 'Comment model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Comment) where?: Where<Comment>,
-  ): Promise<Count> {
+  async count(@param.where(Comment) where?: Where<Comment>): Promise<Count> {
     return this.commentRepository.count(where);
   }
 
@@ -106,7 +104,8 @@ export class CommentController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Comment, {exclude: 'where'}) filter?: FilterExcludingWhere<Comment>
+    @param.filter(Comment, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Comment>,
   ): Promise<Comment> {
     return this.commentRepository.findById(id, filter);
   }

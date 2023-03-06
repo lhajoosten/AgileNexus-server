@@ -9,7 +9,9 @@ export class TeamRepository extends DefaultCrudRepository<
   TeamRelations
 > {
   constructor(
-    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
+    @inject('datasources.Microsoft_SQL_DB')
+    dataSource: MicrosoftSqlDbDataSource,
+  ) {
     super(Team, dataSource);
   }
 }

@@ -23,7 +23,7 @@ import {BoardColumnRepository} from '../repositories';
 export class BoardColumnController {
   constructor(
     @repository(BoardColumnRepository)
-    public boardColumnRepository : BoardColumnRepository,
+    public boardColumnRepository: BoardColumnRepository,
   ) {}
 
   @post('/board-columns')
@@ -106,7 +106,8 @@ export class BoardColumnController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(BoardColumn, {exclude: 'where'}) filter?: FilterExcludingWhere<BoardColumn>
+    @param.filter(BoardColumn, {exclude: 'where'})
+    filter?: FilterExcludingWhere<BoardColumn>,
   ): Promise<BoardColumn> {
     return this.boardColumnRepository.findById(id, filter);
   }
