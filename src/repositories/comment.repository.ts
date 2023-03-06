@@ -9,8 +9,7 @@ export class CommentRepository extends DefaultCrudRepository<
   CommentRelations
 > {
   constructor(
-    @inject('datasources.') dataSource: MicrosoftSqlDbDataSource,
-  ) {
+    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
     super(Comment, dataSource);
   }
 }

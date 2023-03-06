@@ -9,8 +9,7 @@ export class ToDoListRepository extends DefaultCrudRepository<
   ToDoListRelations
 > {
   constructor(
-    @inject('datasources.') dataSource: MicrosoftSqlDbDataSource,
-  ) {
+    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
     super(ToDoList, dataSource);
   }
 }

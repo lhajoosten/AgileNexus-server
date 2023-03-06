@@ -9,8 +9,7 @@ export class BacklogItemRepository extends DefaultCrudRepository<
   BacklogItemRelations
 > {
   constructor(
-    @inject('datasources.') dataSource: MicrosoftSqlDbDataSource,
-  ) {
+    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
     super(BacklogItem, dataSource);
   }
 }

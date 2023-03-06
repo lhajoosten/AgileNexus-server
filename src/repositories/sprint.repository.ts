@@ -9,8 +9,7 @@ export class SprintRepository extends DefaultCrudRepository<
   SprintRelations
 > {
   constructor(
-    @inject('datasources.') dataSource: MicrosoftSqlDbDataSource,
-  ) {
+    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
     super(Sprint, dataSource);
   }
 }

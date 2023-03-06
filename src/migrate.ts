@@ -1,6 +1,9 @@
+import * as dotenv from 'dotenv';
 import {AgileNexusServerApplication} from './application';
 
 export async function migrate(args: string[]) {
+  dotenv.config({path: __dirname + '../../.env'});
+
   const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
   console.log('Migrating schemas (%s existing schema)', existingSchema);
 

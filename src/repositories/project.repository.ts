@@ -9,8 +9,7 @@ export class ProjectRepository extends DefaultCrudRepository<
   ProjectRelations
 > {
   constructor(
-    @inject('datasources.') dataSource: MicrosoftSqlDbDataSource,
-  ) {
+    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
     super(Project, dataSource);
   }
 }

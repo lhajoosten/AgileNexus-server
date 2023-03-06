@@ -9,8 +9,7 @@ export class ScrumBoardRepository extends DefaultCrudRepository<
   ScrumBoardRelations
 > {
   constructor(
-    @inject('datasources.') dataSource: MicrosoftSqlDbDataSource,
-  ) {
+    @inject('datasources.Microsoft_SQL_DB') dataSource: MicrosoftSqlDbDataSource,) {
     super(ScrumBoard, dataSource);
   }
 }

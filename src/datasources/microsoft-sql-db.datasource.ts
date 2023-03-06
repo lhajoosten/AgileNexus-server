@@ -2,25 +2,27 @@ import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 
 const config = {
-  "name": "Microsoft_SQL_DB",
-  "server": process.env.DATABASE_SERVER,
-  "dialect": "MSSQL",
-  "port": process.env.DATABASE_PORT,
-  "database": process.env.DATABASE_NAME,
-  "domain": process.env.DATABASE_DOMAIN,
-  "username": process.env.DATABASE_USER,
-  "askForPassword": process.env.DATABASE_ASK_PASSWORD,
-  "connectionTimeout": 60
-};
+  "name": process.env.DB_SOURCE_NAME,
+  "connector": process.env.DB_CONNECTOR,
+  "database": process.env.DB_NAME,
+  "host": process.env.DB_HOST,
+  "user": process.env.DB_USER,
+  "password": process.env.DB_PASSWORD,
+  "port": JSON.parse(`${process.env.DB_PORT}`),
+  "schema": process.env.DB_SCHEMA,
+  "options": {
+    "encrypt": true,
+  }
+}
 
 @lifeCycleObserver('datasource')
 export class MicrosoftSqlDbDataSource extends juggler.DataSource
   implements LifeCycleObserver {
-  static dataSourceName = 'Microsoft_SQL_DB';
+  static dataSourceName = process.env.DB_SOURCE_NAME;
   static readonly defaultConfig = config;
 
   constructor(
-    @inject('datasources.config.SQL_Server', {optional: true})
+    @inject('datasources.config.Microsoft_SQL_DB', {optional: true})
     dsConfig: object = config,
   ) {
     super(dsConfig);
